@@ -25,14 +25,17 @@
     };
     
     if (player1.IsPlayerBroke == true && player2.IsPlayerBroke == true){
+        playerAccount.innerHTML = player3.playerAccount;
         $("#status").text ("The winner is: " + player3.name);
         button.style.display = "none";
     }
     else if(player2.IsPlayerBroke == true && player3.IsPlayerBroke == true){
+        playerAccount.innerHTML = player1.playerAccount;
             $("#status").text ("The winner is: " + player1.name);
         button.style.display = "none";
             }
     else if(player3.IsPlayerBroke == true && player1.IsPlayerBroke == true){
+        playerAccount.innerHTML = player2.playerAccount;
             $("#status").text ("The winner is: " + player2.name);
         button.style.display = "none";
             }
