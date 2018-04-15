@@ -48,7 +48,7 @@
             if(player1.IsPlayerBroke == true){
                 turnsTaken.innerHTML = player1.turnsTaken 
                 playerAccount.innerHTML = player1.playerAccount;
-                $("#status").text ("You already lost, " +player1.name+ ".  But you should stick around to see who will win!");
+                $("#status").text (gameflow.player1Lost);
                 playersTurn = 2;
             }
             else{
@@ -82,7 +82,7 @@
             if(player2.IsPlayerBroke == true){
                 playerAccount.innerHTML = player2.playerAccount;
                 turnsTaken.innerHTML = player2.turnsTaken
-                $("#status").text ("You already lost, " + player2.name+".  But you should stick around to see who will win!"); 
+                $("#status").text (gameflow.player2Lost); 
                 playersTurn = 3;
             }
             else{
@@ -117,7 +117,7 @@
             if(player3.IsPlayerBroke == true){
                 turnsTaken.innerHTML = player3.turnsTaken
                 playerAccount.innerHTML = player3.playerAccount;
-                $("#status").text ("You already lost, " + player3.name+".  But you should stick around to see who will win!");
+                $("#status").text (gameflow.player3Lost);
                 playersTurn = 1;
             }
             else{
