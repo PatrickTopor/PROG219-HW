@@ -25,17 +25,17 @@
     
     if (player1.IsPlayerBroke == true && player2.IsPlayerBroke == true){
         playerAccount.innerHTML = player3.playerAccount;
-        $("#status").text ("The winner is: " + player3.name);
+        $("#status").text (gameflow.player3WonGame);
         button.style.display = "none";
     }
     else if(player2.IsPlayerBroke == true && player3.IsPlayerBroke == true){
         playerAccount.innerHTML = player1.playerAccount;
-            $("#status").text ("The winner is: " + player1.name);
+            $("#status").text (gameflow.player1WonGame);
         button.style.display = "none";
             }
     else if(player3.IsPlayerBroke == true && player1.IsPlayerBroke == true){
         playerAccount.innerHTML = player2.playerAccount;
-            $("#status").text ("The winner is: " + player2.name);
+            $("#status").text (gameflow.player1WonGame);
         button.style.display = "none";
             }
     else {        
@@ -57,7 +57,7 @@
             //$("#balance").text(parseInt($("#balance").text()) + 1);//figure out how to display the balanxe of the individual players
             player1.playerAccount++;
             playerAccount.innerHTML = player1.playerAccount;
-            $("#status").text ("You won: "+player1.name+"!  Play again to win more!");
+            $("#status").text (gameflow.player1WonRound);
         }
         else {
             $("#balance").text(parseInt($("#balance").text()) - 1);
@@ -65,10 +65,10 @@
             playerAccount.innerHTML = player1.playerAccount;
             if(player1.playerAccount == 0){
                 player1.IsPlayerBroke = true;
-                $("#status").text ("GAME OVER FOR: " +player1.name+ "!");  
+                $("#status").text (gameflow.player1gameOver);  
             }
             else{
-                $("#status").text("You lost this round: "+ player1.name  +"!  Try again and you might win!");
+                $("#status").text(gameflow.player1LostRound);
             }
                
         }  
@@ -91,7 +91,7 @@
             //$("#balance").text(parseInt($("#balance").text()) + 1);
             player2.playerAccount++;
             playerAccount.innerHTML = player2.playerAccount;
-            $("#status").text ("You won: "+player2.name+"!  Play again to win more!");
+            $("#status").text (gameflow.player2WonRound);
         }
         else {
             $("#balance").text(parseInt($("#balance").text()) - 1);
@@ -99,10 +99,10 @@
             playerAccount.innerHTML = player2.playerAccount;
             if(player2.playerAccount == 0){
                 player2.IsPlayerBroke = true;
-                $("#status").text ("GAME OVER FOR: " + player2.name+"!");  
+                $("#status").text (gameflow.player2gameOver);  
             }
             else{
-                $("#status").text("You lost this round: "+ player2.name  +"!  Try again and you might win!");
+                $("#status").text(gameflow.player2LostRound);
             }
                
         }  
@@ -125,7 +125,7 @@
         if (didPlayerWin() == true){
             player3.playerAccount++;
             playerAccount.innerHTML = player3.playerAccount;
-            $("#status").text ("You won: "+player3.name+"!  Play again to win more!");
+            $("#status").text (gameflow.player1WonRound);
         }
         else {
             //$("#balance").text(parseInt($("#balance").text()) - 1);
@@ -133,10 +133,10 @@
             playerAccount.innerHTML = player3.playerAccount;
             if(player3.playerAccount == 0){
                 player3.IsPlayerBroke = true;
-                $("#status").text ("GAME OVER FOR: " + player3.name+"!");  
+                $("#status").text (gameflow.player3gameOver);  
             }
             else{
-                $("#status").text("You lost this round: "+ player3.name  +"!  Try again and you might win!");
+                $("#status").text(gameflow.player3LostRound);
             }
                
         }  
