@@ -1,4 +1,8 @@
-var turnsTaken = document.getElementById("turnCount");//this is needed for it to be displayed
+
+   
+    
+        $(document).ready(function(){   
+    var turnsTaken = document.getElementById("turnCount");//this is needed for it to be displayed
     turnsTaken.innerHTML = 0;
         
     let playerAccount = document.getElementById("balance"); //For some reason, this is needed for the whole thing to work
@@ -17,18 +21,19 @@ var turnsTaken = document.getElementById("turnCount");//this is needed for it to
     this.IsPlayerBroke = IsPlayerBroke;
     }
         
-    let player1 = new Players("Player", 5, 0, "false");
+    var player1 = new Players("Player", 5, 0, "false");
     var player2 = new Players("Johnathan", 5, 0, "false");
     var player3 = new Players("Sally", 5, 0, "false");    
         
-    let playersTurn = 1;    
-    
-        $(document).ready(function(){
+    let playersTurn = 1; 
+            
+
             $("#ButtonBet").click( function() {
                 GameLogic();
 
             });
         });
+
 
 
         
