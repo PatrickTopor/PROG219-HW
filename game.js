@@ -38,8 +38,8 @@
             }
     else {        
     
-    dice1.src = "./images/dice-"+RollDice.dice1Number+".jpg";
-    dice2.src = "./images/dice-"+RollDice.dice2Number+".jpg";
+    dice1.src = "dice-"+RollDice.dice1Number+".jpg";
+    dice2.src = "dice-"+RollDice.dice2Number+".jpg";
         
         if(playersTurn == 1){
         
