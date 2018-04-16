@@ -4,29 +4,39 @@
     <meta charset="UTF-8">
     <title>Dice Game</title>
     <LINK REL=StyleSheet HREF="diceGameCSS.css" TYPE="text/css"></LINK>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
 
 <body>
     <h2> The JavaScript Dice Game</h2>
     <p> You start with $5, each round you either win or lose $1.</p>
-    <img id="image1" src="dice-1.jpg" alt="Dice Image" style="width:50px;height:50px;">
+    <img id="image1" src="./images/dice-1.jpg" alt="Dice Image" style="width:50px;height:50px;">
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    <img id="image2" src="dice-6.jpg" alt="Dice Image" style="width:50px;height:50px;">
+    <img id="image2" src="./images/dice-6.jpg" alt="Dice Image" style="width:50px;height:50px;">
     <br /><br />
+	<p id="debug"></p>
     <p>
-        Your balance is $<span id="balance">5</span><br />
-        Number of turns <span id="turnCount">0</span><br />
+        Player: Your balance is $<span id="balance1">5</span><br />
+        Number of turns <span id="turnCount1">0</span><br />
+    </p>
+	    <p>
+        Johnathan: Your balance is $<span id="balance2">5</span><br />
+        Number of turns <span id="turnCount2">0</span><br />
+    </p>
+	    <p>
+        Sally: Your balance is $<span id="balance3">5</span><br />
+        Number of turns <span id="turnCount3">0</span><br />
     </p>
     <br />
     <p>
         <span id="status"></span>
     </p>
-    <button id="ButtonBet" type="button">Bet Now</button>  <br />
+		<p id="debug2"></p>
+
+    <button id="ButtonBet" type="button" onclick="buttonClicked()">Bet Now</button>  <br />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="startup.js"></script>
     <script src="game.js"></script>
-    <script src="gameflowAndInteractions.js"></script>
 
 </body>
 </html>
