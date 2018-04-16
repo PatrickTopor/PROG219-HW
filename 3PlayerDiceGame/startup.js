@@ -1,8 +1,8 @@
-var turnsTaken = document.getElementById("turnCount");//this is needed for it to be displayed
-    turnsTaken.innerHTML = 0;
+    //this is needed for it to be displayed
+    $("#turnCount").html(0);
         
-    let playerAccount = document.getElementById("balance"); //For some reason, this is needed for the whole thing to work
-    playerAccount.innerHTML = 5;
+    
+    $("#balance").html(5);
         
     let dice1 = document.getElementById("image1");//figure out how to make jquery work on this
     let dice2 = document.getElementById("image2");
