@@ -54,9 +54,9 @@ player3LostRound: "You lost this round: "+ player1.name  +"!  Try again and you 
             }
     else {        
     
-    $("#image1").attr("src", "./images/dice-"+RollDice.dice1Number+".jpg");    
+    $("#image1").attr("src", "dice-"+RollDice.dice1Number+".jpg");    
         
-    $("#image2").attr("src", "./images/dice-"+RollDice.dice2Number+".jpg");
+    $("#image2").attr("src", "dice-"+RollDice.dice2Number+".jpg");
     
         if(playersTurn == 1){       
             if(player1.IsPlayerBroke == true){
