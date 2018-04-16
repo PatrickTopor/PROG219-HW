@@ -4,11 +4,13 @@
     
     $("#balance").html(5);
         
-    let dice1 = document.getElementById("image1");//figure out how to make jquery work on this
-    let dice2 = document.getElementById("image2");
+    //let dice1 = document.getElementById("image1");//figure out how to make jquery work on this
+
+    $("#image1").html();
+    $("#image2").html();
+    //let dice2 = document.getElementById("image2");
         
-    let button = document.getElementById("ButtonBet");//figure out how to make jquery work on this
-    button.disabled = false;
+    
         
     function Players(Name, playerAccount, turnsTaken, IsPlayerBroke){
     this.name = Name;

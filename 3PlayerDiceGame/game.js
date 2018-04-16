@@ -24,39 +24,25 @@
     };
     
     if (player1.IsPlayerBroke == true && player2.IsPlayerBroke == true){
-<<<<<<< HEAD
         $("#balance").html(player3.playerAccount);
         $("#status").text ("The winner is: " + player3.name);
-        button.style.display = "none";
+        $("#ButtonBet").hide();
     }
     else if(player2.IsPlayerBroke == true && player3.IsPlayerBroke == true){
         $("#balance").html(player1.playerAccount);
             $("#status").text ("The winner is: " + player1.name);
-        button.style.display = "none";
+        $("#ButtonBet").hide();
             }
     else if(player3.IsPlayerBroke == true && player1.IsPlayerBroke == true){
         $("#balance").html(player2.playerAccount);
             $("#status").text ("The winner is: " + player2.name);
-=======
-        playerAccount.innerHTML = player3.playerAccount;
-        $("#status").text (gameflow.player3WonGame);
-        button.style.display = "none";
-    }
-    else if(player2.IsPlayerBroke == true && player3.IsPlayerBroke == true){
-        playerAccount.innerHTML = player1.playerAccount;
-            $("#status").text (gameflow.player1WonGame);
-        button.style.display = "none";
-            }
-    else if(player3.IsPlayerBroke == true && player1.IsPlayerBroke == true){
-        playerAccount.innerHTML = player2.playerAccount;
-            $("#status").text (gameflow.player1WonGame);
->>>>>>> 31519ded72ff9791a1fde317272986e0cf28f0da
-        button.style.display = "none";
+
+        $("#ButtonBet").hide();
             }
     else {        
     
-    dice1.src = "dice-"+RollDice.dice1Number+".jpg";
-    dice2.src = "dice-"+RollDice.dice2Number+".jpg";
+    $("#image1").html("dice-"+RollDice.dice1Number+".jpg");
+    $("#image2").html("dice-"+RollDice.dice2Number+".jpg");
         
         if(playersTurn == 1){
         
