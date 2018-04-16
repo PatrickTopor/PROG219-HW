@@ -23,132 +23,123 @@
         }  
     };
     
+        let interactions = {
+        
+  player1Winner: "The winner is: " + player1.name,
+  player2Winner: "The winner is: " + player2.name,
+  player3Winner: "The winner is: " + player3.name,
+player1Won: "You won: "+player1.name+"!  Play again to win more!",
+player2Won: "You won: "+player2.name+"!  Play again to win more!",
+player3Won: "You won: "+player3.name+"!  Play again to win more!",
+player1Done: "GAME OVER FOR: " +player1.name+ "!",
+player2Done: "GAME OVER FOR: " +player2.name+ "!",
+player3Done: "GAME OVER FOR: " +player3.name+ "!",
+player1LostRound: "You lost this round: "+ player1.name  +"!  Try again and you might win!",
+player2LostRound: "You lost this round: "+ player1.name  +"!  Try again and you might win!",
+player3LostRound: "You lost this round: "+ player1.name  +"!  Try again and you might win!",
+    
+};
+    
     if (player1.IsPlayerBroke == true && player2.IsPlayerBroke == true){
-        $("#balance").html(player3.playerAccount);
-        $("#status").text ("The winner is: " + player3.name);
+        $("#status").text (interactions.player3Winner);
         $("#ButtonBet").hide();
     }
     else if(player2.IsPlayerBroke == true && player3.IsPlayerBroke == true){
-        $("#balance").html(player1.playerAccount);
-            $("#status").text ("The winner is: " + player1.name);
-        $("#ButtonBet").hide();
+            $("#status").text (interactions.player1Winner);
+            $("#ButtonBet").hide();
             }
     else if(player3.IsPlayerBroke == true && player1.IsPlayerBroke == true){
-        $("#balance").html(player2.playerAccount);
-            $("#status").text ("The winner is: " + player2.name);
-
-        $("#ButtonBet").hide();
+            $("#status").text (interactions.player2Winner);
+            $("#ButtonBet").hide();
             }
     else {        
     
-    $("#image1").attr("src", "dice-"+RollDice.dice1Number+".jpg");    
+    $("#image1").attr("src", "./images/dice-"+RollDice.dice1Number+".jpg");    
         
-    $("#image2").attr("src", "dice-"+RollDice.dice2Number+".jpg");
-        
-        if(playersTurn == 1){
-        
+    $("#image2").attr("src", "./images/dice-"+RollDice.dice2Number+".jpg");
+    
+        if(playersTurn == 1){       
             if(player1.IsPlayerBroke == true){
-                $("#turnCount").html(player1.turnsTaken );
-                $("#balance").html(player1.playerAccount);
-                $("#status").text (gameflow.player1Lost);
                 playersTurn = 2;
+				GameLogic();
             }
             else{
-
-        if (didPlayerWin() == true){
-            //$("#balance").text(parseInt($("#balance").text()) + 1);//figure out how to display the balanxe of the individual players
-            player1.playerAccount++;
-            $("#balance").html(player1.playerAccount);
-            
-            $("#status").text (gameflow.player1WonRound);
-        }
-        else {
-            $("#balance").text(parseInt($("#balance").text()) - 1);
-            player1.playerAccount--;
-            $("#balance").html(player1.playerAccount);
-            if(player1.playerAccount == 0){
-                player1.IsPlayerBroke = true;
-                $("#status").text (gameflow.player1gameOver);  
-            }
-            else{
-                $("#status").text(gameflow.player1LostRound);
-            }
-               
-        }  
-        //$("#turnCount").text(parseInt($("#turnCount").text()) + 1);
-        player1.turnsTaken++;
-        $("#turnCount").html( player1.turnsTaken );
-        playersTurn = 2;    
-        }//end else statement if player is not broke
-    }//ends player turn one
+				if (didPlayerWin() == true){
+					player1.playerAccount++;
+					$("#balance1").text(player1.playerAccount);
+					$("#status").text (interactions.player1Won);
+				}
+				else {
+					player1.playerAccount--;
+					$("#balance1").text(player1.playerAccount);
+					if(player1.playerAccount == 0){
+						player1.IsPlayerBroke = true;
+						$("#status").text (interactions.player1Done);  
+				}
+					else{
+						$("#status").text(interactions.player1LostRound);
+					}					   
+				}  
+				player1.turnsTaken++;
+				$("#turnCount1").text(player1.turnsTaken);
+				playersTurn = 2;    
+			}//end else statement if player is not broke
+		}//ends player turn one
         else if(playersTurn == 2){
             if(player2.IsPlayerBroke == true){
-                $("#balance").html(player2.playerAccount);
-                $("#turnCount").html(player2.turnsTaken);
-                $("#status").text (gameflow.player2Lost); 
                 playersTurn = 3;
+				GameLogic();
             }
             else{
             
-        if (didPlayerWin() == true){
-            //$("#balance").text(parseInt($("#balance").text()) + 1);
-            player2.playerAccount++;
-            $("#balance").html(player2.playerAccount);
-            
-            $("#status").text (gameflow.player2WonRound);
-        }
-        else {
-            $("#balance").text(parseInt($("#balance").text()) - 1);
-            player2.playerAccount--;
-            $("#balance").html( player2.playerAccount);
-            if(player2.playerAccount == 0){
-                player2.IsPlayerBroke = true;
-                $("#status").text (gameflow.player2gameOver);  
-            }
-            else{
-                $("#status").text(gameflow.player2LostRound);
-            }
-               
-        }  
-        //$("#turnCount").text(parseInt($("#turnCount").text()) + 1);
-        player2.turnsTaken++;
-        $("#turnCount").html(player2.turnsTaken );
-        playersTurn = 3;
-            }//end if not broke else statement
-        }
-        
+				if (didPlayerWin() == true){
+					player2.playerAccount++;
+					$("#balance2").text(player2.playerAccount);
+					$("#status").text (interactions.player2Won);
+				}
+				else {
+					player2.playerAccount--;
+					$("#balance2").text(player2.playerAccount);
+					if(player2.playerAccount == 0){
+						player2.IsPlayerBroke = true;
+						$("#status").text (interactions.player2Done);  
+					}
+					else{
+						$("#status").text(interactions.player2LostRound);
+					}					   
+				}  
+				player2.turnsTaken++;
+				$("#turnCount2").text(player2.turnsTaken);
+				playersTurn = 3;
+			}//end if not broke else statement
+        }        
         else if(playersTurn == 3){
             if(player3.IsPlayerBroke == true){
-                $("#turnCount").html(player3.turnsTaken);
-                $("#balance").html(player3.playerAccount);
-                $("#status").text (gameflow.player3Lost);
                 playersTurn = 1;
+				GameLogic();
             }
             else{
             
-        if (didPlayerWin() == true){
-            player3.playerAccount++;
-            $("#balance").html( player3.playerAccount);
-            
-            $("#status").text (gameflow.player1WonRound);
-        }
-        else {
-            //$("#balance").text(parseInt($("#balance").text()) - 1);
-            player3.playerAccount--;
-            $("#balance").html( player3.playerAccount);
-            if(player3.playerAccount == 0){
-                player3.IsPlayerBroke = true;
-                $("#status").text (gameflow.player3gameOver);  
-            }
-            else{
-                $("#status").text(gameflow.player3LostRound);
-            }
-               
-        }  
-        //$("#turnCount").text(parseInt($("#turnCount").text()) + 1);//find a way to display the turns of each individual player
-        player3.turnsTaken++;
-        $("#turnCount").html( player3.turnsTaken  ); 
-        playersTurn = 1;
+				if (didPlayerWin() == true){
+					player3.playerAccount++;
+					$("#balance3").text(player3.playerAccount);
+					$("#status").text (interactions.player3Won);
+				}
+				else {
+					player3.playerAccount--;
+					$("#balance3").text(player3.playerAccount);
+					if(player3.playerAccount == 0){
+						player3.IsPlayerBroke = true;
+						$("#status").text (interactions.player3Done);  
+					}
+					else{
+						$("#status").text(interactions.player3LostRound);
+					}
+					   
+				}  
+				player3.turnsTaken++;
+				$("#turnCount3").text(player3.turnsTaken);
+				playersTurn = 1;
             }
         }
     }
