@@ -41,8 +41,9 @@
             }
     else {        
     
-    $("#image1").html("dice-"+RollDice.dice1Number+".jpg");
-    $("#image2").html("dice-"+RollDice.dice2Number+".jpg");
+    $("#image1").attr("src", "dice-"+RollDice.dice1Number+".jpg");    
+        
+    $("#image2").attr("src", "dice-"+RollDice.dice2Number+".jpg");
         
         if(playersTurn == 1){
         
