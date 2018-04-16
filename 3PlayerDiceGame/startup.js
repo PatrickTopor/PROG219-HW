@@ -1,12 +1,11 @@
 
         
     
-        
-    function Players(Name, playerAccount, turnsTaken, IsPlayerBroke){
+    function Players(Name, PlayerAccount, TurnsTaken, isPlayerBroke){
     this.name = Name;
-    this.playerAccount = playerAccount;
-    this.turnsTaken = turnsTaken;
-    this.IsPlayerBroke = IsPlayerBroke;
+    this.playerAccount = PlayerAccount;
+    this.turnsTaken = TurnsTaken;
+    this.IsPlayerBroke = isPlayerBroke;
     }
         
     let player1 = new Players("Player", 5, 0, "false");
@@ -18,7 +17,6 @@
         $(document).ready(function(){
             $("#ButtonBet").click( function() {
                 GameLogic();
-
             });
         });
 
