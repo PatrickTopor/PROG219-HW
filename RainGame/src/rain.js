@@ -17,11 +17,15 @@ let player1 = Crafty.e('Player')
   if (this.x == screenWidth)
   {
     pause();
-    Crafty.e('2D, DOM, Text').attr({x:screenWidth/2, y:screenHeight/2}).text("Stage 1 Clear").textFont({size:'20px', weight:'bold'});
+    Crafty.e('2D, DOM, Text')
+    .attr({x:screenWidth/2, y:screenHeight/2})
+    .text("Stage 1 Clear")
+    .textFont({size:'20px', weight:'bold'})
+    .textColor('#FFFFFF');
   }
 });
 //add hit text
-let hitText = Crafty.e('2D, DOM, Text')
+let hitText = Crafty.e('2D,DOM, Text')
 .attr({//hitText location
   x: screenWidth - 100,
   y: 10
@@ -32,7 +36,8 @@ hitText.text('Hit:' + hitCounter);
 hitText.textFont({
   size: '30px',
   weight: 'bold'
-});
+})
+.textColor('#FFFFFF');
 // drop rain at random x place from 50 to 50+screenWidth
 function drop()
 {
