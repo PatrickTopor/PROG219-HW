@@ -35,12 +35,12 @@ function drop()
         .attr({x: randomx, y: 0, w: 2, h: 10})
         .color('#000080')
         .gravity()
-        .checkHits('Player')
-        .bind("HitOn", function(){
+         .onHit('Player', function(){
             this.destroy();
             hitCounter++;
             hitText.text("Hit: " + hitCounter);
-            if (hitCounter == 6)
+
+            if (hitCounter == 5)
             {
               player1.x = 20;
               hitCounter = 0;
