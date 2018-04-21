@@ -27,13 +27,13 @@ Crafty.c('Player', {
         .stopOnScreenSide();
     },
     // Registers a stop-movement function to be called when
-    // this entity hits an entity with the "ScreenSide" component
+    // this entity hits an entity with the "ScreenSide" component.
     stopOnScreenSide: function() {
         this.onHit('ScreenSide', this.stopMovement);
         return this;
     },
     // Stops the movement
-    stopMovement: function() {
+    stopMovement: function() {// this does not work in new version
         this._speed = 0;
         if (this._movement) {
         this.x -= this._movement.x;
