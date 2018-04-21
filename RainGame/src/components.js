@@ -18,7 +18,7 @@ Crafty.c('Drop',{
 Crafty.c('Player', {
     init: function() {
         this.requires('2D,Canvas,DOM,Twoway,Gravity,Collision,str_player,SpriteAnimation')//this calls the sprite
-        .twoway(5)
+        .twoway(4)
         .gravity('Floor')
         // .gravityConst(25) //do not works in new crafty version
         .stopOnScreenSide()
