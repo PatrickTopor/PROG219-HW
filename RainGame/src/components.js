@@ -8,13 +8,20 @@ Crafty.c('Drop',{
     }
 });
 
+//this is supposed to load the sprite
+
+Crafty.sprite('facio.png', {rain:[0, 0, 40, 40]});
+
+
+
+
 //player
 Crafty.c('Player', {
     init: function() {
-        this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, Color')
+        this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, rain')//this calls the sprite
         .twoway(10)
-        .attr({w: 30, h: 30})
-        .color('#FD1C03')
+        .attr({w: 20, h: 30})//is this needed for the sprite to work?
+        //.color('#FD1C03')
         .gravity('Floor')
         .gravityConst(25)
         .stopOnScreenSide();
