@@ -4,17 +4,11 @@ Crafty.sprite(40,56,'images/cat.png', {
     str_player:[0, 0]
 });
 
-Crafty.sprite(10,5,'images/cat.png', {
-    str_rain:[0, 0]
-});
-
-
-
 //rain drop
 Crafty.c('Drop',{
     init:function(){
-        this.requires('2D, Canvas, rain, Gravity, Collision')
-        //.color('#91A5BA')
+        this.requires('2D, Canvas, Color, Gravity, Collision')
+        .color('#0099ff')
         .gravity()
         //.gravityConst(0.2);//do not works in new crafty version
     }
