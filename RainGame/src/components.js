@@ -9,11 +9,11 @@ Crafty.c('Drop',{
 });
 
 //this is supposed to load the sprite
-Crafty.load("raindrop.png", function(){
+
 Crafty.sprite("raindrop.png",{
     spr_drop:[0,0, 20, 30],
     });
-    });
+
 
 
 
