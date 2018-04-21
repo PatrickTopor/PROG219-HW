@@ -10,7 +10,7 @@ Crafty.c('Drop',{
 
 //this is supposed to load the sprite
 
-Crafty.sprite("romansprites.png",{spr_drop:[0,0, 20, 30]});
+Crafty.sprite("facio.png",{spr_drop:[0,0, 20, 30]});
 
 
 
