@@ -3,6 +3,7 @@
 Crafty.sprite(40,56,'images/cat.png', {
     str_player:[0, 0]
 });
+
 Crafty.sprite(10,5,'images/cat.png', {
     str_rain:[0, 0]
 });
