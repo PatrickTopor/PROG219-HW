@@ -1,7 +1,7 @@
 //this is supposed to load the sprite
 
-Crafty.sprite('images/cat-01.png', {
-    str_player:[0, 0, 64, 56]
+Crafty.sprite('images/cat.png', {
+    str_player:[0, 0, 40, 56]
 });
 
 
