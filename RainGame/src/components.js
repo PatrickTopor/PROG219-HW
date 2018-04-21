@@ -8,13 +8,20 @@ Crafty.c('Drop',{
     }
 });
 
+Crafty.load(['raindrop.png'], function(){
+Crafty.sprite(16, 'raindrop.png',{
+    spr_drop:[0,0],
+    });
+});
+
+
 //player
 Crafty.c('Player', {
     init: function() {
-        this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, Color')
+        this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, spr_drop')
         .twoway(10)
         .attr({w: 30, h: 30})
-        .color('#FD1C03')
+        //.color('#FD1C03')
         .gravity('Floor')
         .gravityConst(25)
         .stopOnScreenSide();
