@@ -8,8 +8,9 @@ Crafty.c('Drop',{
     }
 });
 
+//this is supposed to load the sprite
 Crafty.load(['raindrop.png'], function(){
-Crafty.sprite(16, 'raindrop.png',{
+Crafty.sprite(64, 'raindrop.png',{
     spr_drop:[0,0],
     });
 });
@@ -18,9 +19,9 @@ Crafty.sprite(16, 'raindrop.png',{
 //player
 Crafty.c('Player', {
     init: function() {
-        this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, spr_drop')
+        this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, spr_drop')//this calls the sprite
         .twoway(10)
-        //.attr({w: 30, h: 30})
+        //.attr({w: 30, h: 30})//is this needed for the sprite to work?
         //.color('#FD1C03')
         .gravity('Floor')
         .gravityConst(25)
