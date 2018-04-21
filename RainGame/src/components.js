@@ -20,7 +20,7 @@ Crafty.c('Player', {
     init: function() {
         this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, spr_drop')
         .twoway(10)
-        .attr({w: 30, h: 30})
+        //.attr({w: 30, h: 30})
         //.color('#FD1C03')
         .gravity('Floor')
         .gravityConst(25)
