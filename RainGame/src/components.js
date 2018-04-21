@@ -1,7 +1,7 @@
 //this is supposed to load the sprite
 
-Crafty.sprite('images/cat.png', {
-    str_player:[0, 0, 40, 56]
+Crafty.sprite(40,56,'images/cat.png', {
+    str_player:[0, 0]
 });
 
 
@@ -19,12 +19,12 @@ Crafty.c('Drop',{
 //player
 Crafty.c('Player', {
     init: function() {
-        this.requires('2D,Canvas,DOM,Twoway,Gravity,Collision,str_player')//this calls the sprite
+        this.requires('2D,Canvas,DOM,Twoway,Gravity,Collision,str_player,SpriteAnimation')//this calls the sprite
         .twoway(10)
         //.color('#FD1C03')
         .gravity('Floor')
         // .gravityConst(25) //do not works in new crafty version
-        .stopOnScreenSide();
+        .stopOnScreenSide()
     },
     // Registers a stop-movement function to be called when
     // this entity hits an entity with the "ScreenSide" component.
