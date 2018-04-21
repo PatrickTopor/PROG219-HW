@@ -20,7 +20,7 @@ Crafty.c('Player', {
     init: function() {
         this.requires('2D,Canvas,Twoway,Gravity,Collision,Canvas, spr_drop')//this calls the sprite
         .twoway(10)
-        .attr({w: 20, h: 30})//is this needed for the sprite to work?
+        .attr({x: 20, y: 380, w: 20, h: 30})//is this needed for the sprite to work?
         //.color('#FD1C03')
         .gravity('Floor')
         .gravityConst(25)
