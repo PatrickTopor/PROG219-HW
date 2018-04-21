@@ -1,4 +1,4 @@
-
+//Setting screen size and hit counter
 let screenWidth = 800;
 let screenHeight = 400;
 let hitCounter = 0;
