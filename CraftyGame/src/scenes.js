@@ -7,12 +7,17 @@ Crafty.scene('Game1', function(){
 //this is the first game, where the explorer is trying to enter the temple
 //with a hail of knives trying to hit them
 //if they die, the game restarts
+    var btn1 = document.getElementByID('StartFirstGame');
+    btn1.style.display = "none";
     let player1 = Crafty.e('Player')
     .attr({x: 20, y: 200})//player location
     .bind("EnterFrame", function(){
     if (this.x == screenWidth)
       {
         Crafty.scene('opening2');
+          var btn2 = document.getElementByID('StartSecondGame');
+          //now shows the button for the second game with the second opening scene
+          btn2.style.display = "block";
       }
     });
 
@@ -28,6 +33,8 @@ Crafty.scene('Game2', function(){
 //this is the second game, where the player looks around and tries to find the tresure
 //before the natives find and kill them
 //must add a timer here
+  var btn2 = document.getElementByID('StartSecondGame');
+  btn2.style.display = "none";
   let player1 = Crafty.e('Player')
     .attr({x: 20, y: 200})//player location
     .bind("EnterFrame", function(){
