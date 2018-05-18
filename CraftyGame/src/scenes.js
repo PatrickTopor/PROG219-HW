@@ -7,6 +7,14 @@ Crafty.scene('Game1', function(){
 //this is the first game, where the explorer is trying to enter the temple
 //with a hail of knives trying to hit them
 //if they die, the game restarts
+    let player1 = Crafty.e('Player')
+    .attr({x: 20, y: 200})//player location
+    .bind("EnterFrame", function(){
+    if (this.x == screenWidth)
+      {
+        Crafty.scene('opening2');
+      }
+    });
 
 });
 
@@ -20,6 +28,18 @@ Crafty.scene('Game2', function(){
 //this is the second game, where the player looks around and tries to find the tresure
 //before the natives find and kill them
 //must add a timer here
+  let player1 = Crafty.e('Player')
+    .attr({x: 20, y: 200})//player location
+    .bind("EnterFrame", function(){
+    if (//the player finds the treasure && the time has not run out)
+      {
+        Crafty.scene('Victory');
+      }
+     if(//the player runs out of time)
+       {
+         Crafty.scene('Loss');
+       }
+    });
 
 });
 
