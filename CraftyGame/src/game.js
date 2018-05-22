@@ -1,7 +1,14 @@
-//Setting screen size and hit counter
-let screenWidth = 800;
-let screenHeight = 400;
-//init game
-Crafty.init(screenWidth,screenHeight, document.getElementById('game'));
- Crafty.background('rgb(249, 223, 125)');
+Game = {
+
+  map_grid: {
+    width: 24,
+    height: 16,
+    tile: {
+      width: 16,
+      height: 16
+    }
+    },
+ 
+    Crafty.init(Game.width(), Game.height());
+    Crafty.background('rgb(249, 223, 125)');
 
