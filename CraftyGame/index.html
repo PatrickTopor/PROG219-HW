@@ -3,10 +3,6 @@
 <html>
   <head>
       <style>
-        #game{
-          border:solid 5px black;
-          border-radius:8px;
-        }
         #StartFirsyGame{
         visibility: visible;
         }
@@ -17,11 +13,13 @@
       </style>
   </head>
   <body>
-    <div id="game" style="margin:0 auto;"></div>
     <script type="text/javascript" src="lib/crafty.js"></script>
     <script src="src/components.js"></script>
     <script src="src/game.js"></script>
     <script src="src/scenes.js"></script>
+    <script>
+              window.addEventListener('load', Game.start);
+    </script
       <div class="button">
         <input  type="button" value="pause" onclick="pause()" />
         //check to see if the code below will actually work in going to the next scene
