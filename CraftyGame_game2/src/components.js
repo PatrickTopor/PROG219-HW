@@ -30,19 +30,56 @@ Crafty.c('Wall03', {
         this.requires('Actor, Solid, spr_midWall03');
     },
 });
-
 Crafty.c('leftWallCorner', {
     init: function() {
         this.requires('Actor, Solid, spr_leftEagleWall');
     },
 });
-
 Crafty.c('rightWallCorner', {
     init: function() {
         this.requires('Actor, Solid, spr_rightEagleWall');
     },
 });
-
+Crafty.c('floor01', {
+    init: function() {
+        this.requires('Actor, spr_floor01');
+    },
+});
+Crafty.c('floor02', {
+    init: function() {
+        this.requires('Actor,spr_floor02');
+    },
+});
+Crafty.c('floor03', {
+    init: function() {
+        this.requires('Actor,spr_floor03');
+    },
+});
+Crafty.c('floor04', {
+    init: function() {
+        this.requires('Actor,spr_floor04');
+    },
+});
+Crafty.c('floor05', {
+    init: function() {
+        this.requires('Actor,spr_floor11');
+    },
+});
+Crafty.c('floor06', {
+    init: function() {
+        this.requires('Actor,spr_floor12');
+    },
+});
+Crafty.c('floor07', {
+    init: function() {
+        this.requires('Actor,spr_floor13');
+    },
+});
+Crafty.c('floor08', {
+    init: function() {
+        this.requires('Actor,spr_floor14');
+    },
+});
 // An "Actor" is an entity that is drawn in 2D 
 // on canvas via our logical coordinate grid
 Crafty.c('Actor', {

@@ -26,6 +26,16 @@ Crafty.scene('Loading', function(){
             spr_leftEagleWall:    [3, 0],
             spr_rightEagleWall:    [4, 0],
         });
+        Crafty.sprite(32, 'images/floor.png', {
+            spr_floor01:    [0, 0],
+            spr_floor02:    [1, 0],
+            spr_floor03:    [2, 0],
+            spr_floor04:    [3, 0],
+            spr_floor11:    [0, 1],
+            spr_floor12:    [1, 1],
+            spr_floor13:    [2, 1],
+            spr_floor14:    [3, 1],
+        });
         // Define the PC's sprite to be the first sprite in the third row of the
         //  animation sprite map
         Crafty.sprite(32, 'images/player_animation.png', {
@@ -61,10 +71,34 @@ Crafty.scene('Game', function() {
             Crafty.e('Wall02').at(x, y);
         }
     };
-    // Player character, placed at 5, 5 on our grid
-    this.player = Crafty.e('PlayerCharacter').at(5, 5);
-    this.occupied[this.player.at().x][this.player.at().y] = true;
-    // and mark that spot as occupied
+    function retunNormalFloorWall(x,y){
+        let randomNum=Math.random();
+        if(randomNum < 0.02){
+            Crafty.e('floor01').at(x, y);
+        }
+        else if(randomNum>=0.02&&randomNum<0.04){
+            Crafty.e('floor03').at(x, y);
+        }
+        else if(randomNum>=0.04&&randomNum<0.24){
+            Crafty.e('floor03').at(x, y);
+        }
+        else if(randomNum>=0.24&&randomNum<0.32){
+            Crafty.e('floor04').at(x, y);
+        }
+        else if(randomNum>=0.32&&randomNum<0.33){
+            Crafty.e('floor05').at(x, y);
+        }
+        else if(randomNum>=0.33&&randomNum<0.35){
+            Crafty.e('floor03').at(x, y);
+        }
+        else if(randomNum>=0.35&&randomNum<0.56){
+            Crafty.e('floor07').at(x, y);
+        }
+        else{
+            Crafty.e('floor08').at(x, y);
+        }
+    };
+
     // Place a wall at every edge square on our grid of tiles
     for (var x = 0; x < Game.map_grid.width; x++) {
         for (var y = 0; y < Game.map_grid.height; y++) {
@@ -97,9 +131,15 @@ Crafty.scene('Game', function() {
                 retunNormalWall(x,y);
                 this.occupied[x][y] = true;
             }
-
+            else{
+                retunNormalFloorWall(x,y);
+            }
         }
     }
+    // Player character, placed at 5, 5 on our grid
+    this.player = Crafty.e('PlayerCharacter').at(5, 5);
+    this.occupied[this.player.at().x][this.player.at().y] = true;
+    // and mark that spot as occupied
     // Generate up to five villages on the map in random locations
     var max_villages = 5;
     for (var x = 0; x < Game.map_grid.width; x++) {
