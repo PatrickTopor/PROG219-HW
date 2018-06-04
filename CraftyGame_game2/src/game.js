@@ -2,7 +2,7 @@ let Game = {
     // This map_grid object, defined inside the Game object
     // defines our grid's size and size of each tile
     map_grid: {
-        width: 24,
+        width: 25,
         height: 16,
         tile: {
             width: 32,
@@ -27,7 +27,21 @@ let Game = {
         Crafty.background('rgb(255, 255, 255)');
         // Simply start the "Game" scene to get things going
         Crafty.scene('Loading');
-    }   
+    },
+};
+let Game2={
+    boxLeftGridPosition:{
+        x:6,
+        y:1,
+    },
+    boxRightGridPosition:{
+        x:18,
+        y:1,
+    },
+    showEntrance:false,
+    leftNotNull:true,
+    boxPass:false,
+    clockPass:false,
 };
 $text_css = {
     'font-size': '24px',

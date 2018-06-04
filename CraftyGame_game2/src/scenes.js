@@ -36,6 +36,18 @@ Crafty.scene('Loading', function(){
             spr_floor13:    [2, 1],
             spr_floor14:    [3, 1],
         });
+        Crafty.sprite(32,96, 'images/Venus de Milo.png', {
+            spr_Venus:    [0, 0]
+        });
+        Crafty.sprite(32, 'images/lock_box.gif', {
+            spr_box:    [0, 0]
+        });
+        Crafty.sprite(64,61, 'images/entrace_secretRoom.png', {
+            spr_sEntrace:    [0, 0]
+        });
+        Crafty.sprite(64,128, 'images/clock.png', {
+            spr_clock:    [0, 0]
+        });
         // Define the PC's sprite to be the first sprite in the third row of the
         //  animation sprite map
         Crafty.sprite(32, 'images/player_animation.png', {
@@ -64,9 +76,6 @@ Crafty.scene('Game', function() {
         if(randomNum < 0.2){
             Crafty.e('Wall01').at(x, y);
         }
-        else if(randomNum>0.9){
-            Crafty.e('Wall03').at(x, y);
-        }
         else{
             Crafty.e('Wall02').at(x, y);
         }
@@ -76,20 +85,14 @@ Crafty.scene('Game', function() {
         if(randomNum < 0.02){
             Crafty.e('floor01').at(x, y);
         }
-        else if(randomNum>=0.02&&randomNum<0.04){
+        else if(randomNum>=0.02&&randomNum<0.26){
             Crafty.e('floor03').at(x, y);
         }
-        else if(randomNum>=0.04&&randomNum<0.24){
-            Crafty.e('floor03').at(x, y);
-        }
-        else if(randomNum>=0.24&&randomNum<0.32){
+        else if(randomNum>=0.26&&randomNum<0.32){
             Crafty.e('floor04').at(x, y);
         }
         else if(randomNum>=0.32&&randomNum<0.33){
             Crafty.e('floor05').at(x, y);
-        }
-        else if(randomNum>=0.33&&randomNum<0.35){
-            Crafty.e('floor03').at(x, y);
         }
         else if(randomNum>=0.35&&randomNum<0.56){
             Crafty.e('floor07').at(x, y);
@@ -98,11 +101,29 @@ Crafty.scene('Game', function() {
             Crafty.e('floor08').at(x, y);
         }
     };
+    function randomBox(){
+        let randomNum=Math.random();
+        if(randomNum < 0.5){
+            Game2.leftNotNull=false;
+        }
+    };
 
     // Place a wall at every edge square on our grid of tiles
     for (var x = 0; x < Game.map_grid.width; x++) {
         for (var y = 0; y < Game.map_grid.height; y++) {
-            if(x==0){
+            if(x==7&&y>0&y<14){
+                Crafty.e('Wall03').at(x, y);
+                this.occupied[x][y] = true;
+            }
+            else if(x==17&&y>0&y<14){
+                Crafty.e('Wall03').at(x, y);
+                this.occupied[x][y] = true;
+            }
+            else if(y==7&&(x>1&x<7||x<23&x>17)){
+                Crafty.e('Wall03').at(x, y);
+                this.occupied[x][y] = true;
+            }
+            else if(x==0){
                 if(y==0||y==Game.map_grid.height - 1){
                     // Place a left Wall Corner entity at the current tile
                     Crafty.e('leftWallCorner').at(x, y);
@@ -137,28 +158,31 @@ Crafty.scene('Game', function() {
         }
     }
     // Player character, placed at 5, 5 on our grid
-    this.player = Crafty.e('PlayerCharacter').at(5, 5);
-    this.occupied[this.player.at().x][this.player.at().y] = true;
     // and mark that spot as occupied
-    // Generate up to five villages on the map in random locations
-    var max_villages = 5;
-    for (var x = 0; x < Game.map_grid.width; x++) {
-        for (var y = 0; y < Game.map_grid.height; y++) {
-            if (Math.random() < 0.02) {
-                if (Crafty('Village').length < max_villages && !this.occupied[x][y]) {
-                    Crafty.e('Village').at(x, y);
-                }
-            }
-        }
-    }
-    this.show_victory = this.bind('VillageVisited', function() {
-        if (!Crafty('Village').length) {
-        Crafty.scene('Victory');
-        }
-    });
-},
-function() {
-    this.unbind('VillageVisited', this.show_victory);
+    this.player = Crafty.e('PlayerCharacter').at(12, 14);
+    this.occupied[this.player.at().x][this.player.at().y] = true;
+    // venus character, placed at 12, 7 on our grid
+    // and mark that spot as occupied, venus taked 3 grid
+    this.Venus = Crafty.e('Venus').at(12, 5);
+    this.occupied[this.Venus.at().x][this.Venus.at().y] = true;
+    this.occupied[this.Venus.at().x][this.Venus.at().y+1] = true;
+    this.occupied[this.Venus.at().x][this.Venus.at().y+1] = true;
+
+    // Generate up to two box on the map , on is in the left ,other is in the right
+    this.boxLeft=Crafty.e('Box').at(Game2.boxLeftGridPosition.x,Game2.boxLeftGridPosition.y);
+    this.boxRight=Crafty.e('Box').at(Game2.boxRightGridPosition.x,Game2.boxRightGridPosition.y);
+    randomBox();//random box not null
+    // and mark that spot as occupied
+    this.clock = Crafty.e('Clock').at(6, 7);
+    this.occupied[this.clock.at().x][this.clock.at().y] = true;
+
+    this.TextShow=Crafty.e("2D, DOM, Text")
+                    .attr({ x: 32, y: 10 })
+                    .text("Information:")
+                    .textColor("#FFFFFF")
+                    .textFont({  type: 'italic',size: '1em'});
+    console.log(this.TextShow);
+
 });
 Crafty.scene('Victory', function() {
     Crafty.e('2D, DOM, Text')

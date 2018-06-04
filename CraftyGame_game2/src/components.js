@@ -15,6 +15,14 @@ Crafty.c('Grid', {
       }
     }
 });
+// An "Actor" is an entity that is drawn in 2D 
+// on canvas via our logical coordinate grid
+Crafty.c('Actor', {
+    init: function() {
+      this.requires('2D, Canvas, Grid');
+    },
+});
+//this is wall
 Crafty.c('Wall01', {
 init: function() {
     this.requires('Actor, Solid, spr_midWall01');
@@ -40,6 +48,8 @@ Crafty.c('rightWallCorner', {
         this.requires('Actor, Solid, spr_rightEagleWall');
     },
 });
+
+//this is floor
 Crafty.c('floor01', {
     init: function() {
         this.requires('Actor, spr_floor01');
@@ -80,11 +90,40 @@ Crafty.c('floor08', {
         this.requires('Actor,spr_floor14');
     },
 });
-// An "Actor" is an entity that is drawn in 2D 
-// on canvas via our logical coordinate grid
-Crafty.c('Actor', {
+//this is Venus de Milo
+Crafty.c('Venus', {
     init: function() {
-      this.requires('2D, Canvas, Grid');
+        this.requires('Actor, Solid, spr_Venus');
+        this.attr({
+            w: Game.map_grid.tile.width,
+            h:Game.map_grid.tile.height*3
+        })
+    },
+});
+//this is entrace to secret room
+Crafty.c('secretEntrace', {
+    init: function() {
+        this.requires('Actor, spr_sEntrace,Solid');
+        this.attr({
+            w: Game.map_grid.tile.width,
+            h:Game.map_grid.tile.height
+        })
+    },
+});
+//this is box
+Crafty.c('Box', {
+    init: function() {
+        this.requires('Actor,Solid,spr_box');
+    },
+});
+//this is box
+Crafty.c('Clock', {
+    init: function() {
+        this.requires('Actor,Solid,spr_clock');
+        this.attr({
+            w: Game.map_grid.tile.width,
+            h:Game.map_grid.tile.height*2
+        });
     },
 });
 // This is the player-controlled character
@@ -92,11 +131,12 @@ Crafty.c('PlayerCharacter', {
     init: function() {
         this.requires('Actor, Fourway, Collision, spr_player, SpriteAnimation')
         .fourway(4)
-        .stopOnSolids()
-        // right after this existing line, add 
-        // Whenever the PC touches a village, respond to the event
-        .onHit('Village', this.visitVillage)
-                // These next lines define our four animations
+        .onHit('secretEntrace', this.visitSecretEntrace)// this entity hits an entity with the "secretEntrace" component
+        .onHit('Venus', this.visitVenus)// this entity hits an entity with the "Venus" component
+        .onHit('Clock', this.visitClock)// this entity hits an entity with the "Clock" component
+        .onHit('Box', this.visitBox)// this entity hits an entity with the "Box" component
+        .onHit('Solid', this.stopMovement)// this entity hits an entity with the "Solid" component
+        // These next lines define our four animations
         //  each call to .animate specifies:
         //  - the name of the animation
         //  - the x and y coordinates within the sprite
@@ -123,12 +163,6 @@ Crafty.c('PlayerCharacter', {
         });
     
     },
-    // Registers a stop-movement function to be called when
-// this entity hits an entity with the "Solid" component
-    stopOnSolids: function() {
-        this.onHit('Solid', this.stopMovement);
-        return this;
-    },
     // Stops the movement
     stopMovement: function() {
         this._speed = 0;
@@ -137,21 +171,68 @@ Crafty.c('PlayerCharacter', {
         this.y -= this._movement.y;
         }
     },
-    // after that code, add:
-    // Respond to this player visiting a village
-    visitVillage: function(data) {
-        villlage = data[0].obj;
-        villlage.collect();
-    }  
-});
-// A village is a tile on the grid that the PC must visit in order to win the game
-Crafty.c('Village', {
-    init: function() {
-        this.requires('Actor, spr_village')
+    // Respond to this player visiting SecretEntrace
+    visitSecretEntrace:function(data) {
+        //Crafty.trigger('VenusVisited', this);
+        console.log("move to final Victory scene")
+        Crafty.scene('Victory');
+        //reset Game2
+        Game2={
+            boxLeftGridPosition:{
+                x:6,
+                y:1,
+            },
+            boxRightGridPosition:{
+                x:18,
+                y:1,
+            },
+            showEntrance:false,
+            leftNotNull:true,
+            boxPass:false,
+            clockPass:false,
+        };
     },
-    collect: function() {
-    this.destroy();
-    Crafty.trigger('VillageVisited', this);
-    }
+    // Respond to this player visiting venus
+    visitVenus: function(data) {
+        if(!Game2.showEntrance&&Game2.boxPass){
+            //create secretEntrace
+            Crafty.e('secretEntrace').at(18, 8);
+            Game2.showEntrance=true;
+            console.log("entrance showed")
+        }
+    },
+    // Respond to this player visiting clock
+    visitClock: function(data) {
+        clock = data[0].obj;
+        if(Game2.boxPass&&!Game2.clockPass){
+            //create secretEntrace
+            Game2.clockPass=true;
+            console.log("clock passed")
+        }
+    },
+    //respond to this player visiting box
+    visitBox:function(data){
+        box=data[0].obj;
+        let boxGridX=box.x/Game.map_grid.tile.width;
+        let boxGridY=box.y/Game.map_grid.tile.height;
+        if(boxGridX==Game2.boxLeftGridPosition.x&&boxGridY==Game2.boxLeftGridPosition.y){
+            if(Game2.leftNotNull){
+                console.log("vist left box and get information for next step")
+                Game2.boxPass=true;
+            }
+            else{
+                console.log("vist left box but nothing happen")
+            }
+        }
+        else{
+            if(Game2.leftNotNull){
+                console.log("vist right box but nothing happen")
+            }
+            else{
+                console.log("vist right box and get information for next step")
+                Game2.boxPass=true;
+            }
+        }
+        box.destroy();
+    },
 });
-  
