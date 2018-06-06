@@ -57,6 +57,12 @@ Crafty.scene('Loading', function(){
         Crafty.sprite(96,96, 'images/star1.png', {
             spr_star1:    [0, 0]
         });
+        Crafty.sprite(32,32, 'images/arrow.png', {
+            spr_arrowUp:    [0, 0],
+            spr_arrowDown:    [1, 0],
+            spr_arrowLeft:    [2, 0],
+            spr_arrowRight:    [3, 0]
+        });
         Crafty.sprite(64,64, 'images/sculpture.png', {
             spr_sculpture1:    [0, 0],
             spr_sculpture2:    [0, 1]
@@ -82,6 +88,10 @@ Crafty.scene('Loading', function(){
         });
         Crafty.sprite(62,62, 'images/pool.png', {
             spr_pool:    [0, 0],
+        });
+        Crafty.sprite(32,32, 'images/bones.png', {
+            spr_boneH:    [0, 0],
+            spr_boneA:    [1, 0],
         });
         Crafty.sprite(64,64, 'images/evil_dragon.png', {
             spr_evilDragonL:    [0, 0],
@@ -198,6 +208,18 @@ Crafty.scene('Game', function() {
             }
         }
     }
+    //bones
+    Crafty.e('BoneHuman').at(3, 5);
+    Crafty.e('BoneAnimal').at(3, 4);
+    Crafty.e('BoneHuman').at(6, 4);
+    Crafty.e('BoneAnimal').at(6, 5);
+    Crafty.e('BoneAnimal').at(5, 6);
+    Crafty.e('BoneAnimal').at(4,6);
+    //arrows
+    Crafty.e('ArrowUp').at(18, 3).attr({alpha: 0.6});
+    Crafty.e('ArrowDown').at(21, 6).attr({alpha: 0.6});
+    Crafty.e('ArrowLeft').at(21, 3).attr({alpha: 0.6});
+    Crafty.e('ArrowRight').at(18, 6).attr({alpha: 0.6});
     //Sculpture1 and Sculpture2
     this.Sculpture1=Crafty.e('Sculpture1').at(8, 12);
     this.Sculpture2=Crafty.e('Sculpture2').at(15, 12);
@@ -227,21 +249,15 @@ Crafty.scene('Game', function() {
     // Player character, placed at 5, 5 on our grid
     // and mark that spot as occupied
     this.player = Crafty.e('PlayerCharacter').at(12, 14);
-    this.occupied[this.player.at().x][this.player.at().y] = true;
     // venus character, placed at 12, 7 on our grid
     // and mark that spot as occupied, venus taked 3 grid
     this.Venus = Crafty.e('Venus').at(12, 5);
-    this.occupied[this.Venus.at().x][this.Venus.at().y] = true;
-    this.occupied[this.Venus.at().x][this.Venus.at().y+1] = true;
-    this.occupied[this.Venus.at().x][this.Venus.at().y+1] = true;
-
     // Generate up to two box on the map , on is in the left ,other is in the right
     this.boxLeft=Crafty.e('Box').at(Game2.boxLeftGridPosition.x,Game2.boxLeftGridPosition.y);
     this.boxRight=Crafty.e('Box').at(Game2.boxRightGridPosition.x,Game2.boxRightGridPosition.y);
     randomBox();//random box not null
     // clock
     this.clock = Crafty.e('Clock').at(6, 7);
-    this.occupied[this.clock.at().x][this.clock.at().y] = true;
 });
 Crafty.scene('Victory', function() {
     Crafty.e('2D, DOM, Text')

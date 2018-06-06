@@ -211,6 +211,38 @@ Crafty.c('WaterVat', {
         });
     },
 });
+//this is arrows
+Crafty.c('ArrowUp', {
+    init: function() {
+        this.requires('Actor,spr_arrowUp');
+    },
+});
+Crafty.c('ArrowDown', {
+    init: function() {
+        this.requires('Actor,spr_arrowDown');
+    },
+});
+Crafty.c('ArrowLeft', {
+    init: function() {
+        this.requires('Actor,spr_arrowLeft');
+    },
+});
+Crafty.c('ArrowRight', {
+    init: function() {
+        this.requires('Actor,spr_arrowRight');
+    },
+});
+//this is bones
+Crafty.c('BoneHuman', {
+    init: function() {
+        this.requires('Actor,spr_boneH');
+    },
+});
+Crafty.c('BoneAnimal', {
+    init: function() {
+        this.requires('Actor,spr_boneA');
+    },
+});
 //this is Pool
 Crafty.c('Pool', {
     init: function() {
