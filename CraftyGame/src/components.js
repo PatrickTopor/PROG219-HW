@@ -1,6 +1,6 @@
 //this is supposed to load the sprite
 
-Crafty.sprite(60,65,'images/explorer.png', {
+Crafty.sprite(60,65,'images/explorer sprite.png', {
     str_player:[0, 0]
 });
 

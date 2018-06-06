@@ -103,7 +103,7 @@ Crafty.c('Venus', {
 //this is entrace to secret room
 Crafty.c('secretEntrace', {
     init: function() {
-        this.requires('Actor, spr_sEntrace,Solid');
+        this.requires('Actor, spr_sEntrace,Solid,Tween');
         this.attr({
             w: Game.map_grid.tile.width,
             h:Game.map_grid.tile.height
@@ -116,12 +116,126 @@ Crafty.c('Box', {
         this.requires('Actor,Solid,spr_box');
     },
 });
-//this is box
+//this is clcok
 Crafty.c('Clock', {
     init: function() {
         this.requires('Actor,Solid,spr_clock');
         this.attr({
             w: Game.map_grid.tile.width,
+            h:Game.map_grid.tile.height*2
+        });
+    },
+});
+//this is key
+Crafty.c('Key', {
+    init: function() {
+        this.requires('Actor,spr_key,Tween');
+    },
+});
+//this is notebook
+Crafty.c('NoteBook', {
+    init: function() {
+        this.requires('Actor,spr_noteBook,Tween');
+    },
+});
+//this is star
+Crafty.c('Star1', {
+    init: function() {
+        this.requires('Actor,spr_star1');
+        this.attr({
+            w: Game.map_grid.tile.width*3,
+            h:Game.map_grid.tile.height*3
+        });
+    },
+});
+//this is door
+Crafty.c('Door1', {
+    init: function() {
+        this.requires('Actor,spr_door1,Solid');
+        this.attr({
+            w: Game.map_grid.tile.width,
+            h:Game.map_grid.tile.height
+        });
+    },
+});
+Crafty.c('Door2', {
+    init: function() {
+        this.requires('Actor,spr_door2,Solid');
+        this.attr({
+            w: Game.map_grid.tile.width,
+            h:Game.map_grid.tile.height
+        });
+    },
+});
+//this is angel
+Crafty.c('AngelLeft', {
+    init: function() {
+        this.requires('Actor,spr_angelLeft,Solid');
+    },
+});
+Crafty.c('AngelRight', {
+    init: function() {
+        this.requires('Actor,spr_angelRight,Solid');
+    },
+});
+//this is Ascetic
+Crafty.c('Ascetic', {
+    init: function() {
+        this.requires('Actor,spr_ascetic,Solid');
+    },
+});
+//this is Evil Dragon
+Crafty.c('EDragonR', {
+    init: function() {
+        this.requires('Actor,spr_evilDragonL,Solid');
+    },
+});
+Crafty.c('EDragonL', {
+    init: function() {
+        this.requires('Actor,spr_evilDragonR,Solid');
+    },
+});
+//this is Dragon
+Crafty.c('Dragon', {
+    init: function() {
+        this.requires('Actor,spr_dragon,Solid');
+    },
+});
+//this is WaterVat
+Crafty.c('WaterVat', {
+    init: function() {
+        this.requires('Actor,spr_waterVat,Solid');
+        this.attr({
+            w: Game.map_grid.tile.width*2,
+            h:Game.map_grid.tile.height*2
+        });
+    },
+});
+//this is Pool
+Crafty.c('Pool', {
+    init: function() {
+        this.requires('Actor,spr_pool,Solid');
+        this.attr({
+            w: Game.map_grid.tile.width*2,
+            h:Game.map_grid.tile.height*2
+        });
+    },
+});
+//this is sculpture
+Crafty.c('Sculpture1', {
+    init: function() {
+        this.requires('Actor,Solid,spr_sculpture1');
+        this.attr({
+            w: Game.map_grid.tile.width*2,
+            h:Game.map_grid.tile.height*2
+        });
+    },
+});
+Crafty.c('Sculpture2', {
+    init: function() {
+        this.requires('Actor,Solid,spr_sculpture2');
+        this.attr({
+            w: Game.map_grid.tile.width*2,
             h:Game.map_grid.tile.height*2
         });
     },
@@ -160,8 +274,7 @@ Crafty.c('PlayerCharacter', {
             } else {
                 this.stop();
             }
-        });
-    
+        });    
     },
     // Stops the movement
     stopMovement: function() {
@@ -191,14 +304,19 @@ Crafty.c('PlayerCharacter', {
             boxPass:false,
             clockPass:false,
         };
+        //reset information Area
+        informationArea.innerHTML="<h2>You win!</h2>";
     },
     // Respond to this player visiting venus
     visitVenus: function(data) {
-        if(!Game2.showEntrance&&Game2.boxPass){
+        if(!Game2.showEntrance&&Game2.clockPass){
             //create secretEntrace
-            Crafty.e('secretEntrace').at(18, 8);
+            Crafty.e('secretEntrace').at(18, 8)
+            .attr({alpha:0.2})
+            .tween({alpha: 1.0}, 100);
             Game2.showEntrance=true;
             console.log("entrance showed")
+            informationArea.innerHTML=("<h4>You put the key into the hole, there is some noise from right.</h4>")+informationArea.innerHTML;
         }
     },
     // Respond to this player visiting clock
@@ -208,6 +326,11 @@ Crafty.c('PlayerCharacter', {
             //create secretEntrace
             Game2.clockPass=true;
             console.log("clock passed")
+            informationArea.innerHTML=("<h4>You turned the clock needle to 12:00 am. You find a special key.</h4>")+informationArea.innerHTML;
+            Crafty.e("Key,Tween").at(4,15)
+            .attr({alpha:0.2})
+            .tween({alpha: 1.0}, 100)
+         
         }
     },
     //respond to this player visiting box
@@ -219,18 +342,28 @@ Crafty.c('PlayerCharacter', {
             if(Game2.leftNotNull){
                 console.log("vist left box and get information for next step")
                 Game2.boxPass=true;
+                informationArea.innerHTML=("<h4>You find a notebook wrote \"There is a weird clock.\"</h4>")+informationArea.innerHTML;
+                Crafty.e("NoteBook").at(3,15)
+                .attr({alpha:0.2})
+                .tween({alpha: 1.0}, 100);
             }
             else{
                 console.log("vist left box but nothing happen")
+                informationArea.innerHTML=("<h4>You find nothing in this empty box.</h4>")+informationArea.innerHTML;
             }
         }
         else{
             if(Game2.leftNotNull){
                 console.log("vist right box but nothing happen")
+                informationArea.innerHTML=("<h4>You find nothing in this empty box.</h4>")+informationArea.innerHTML;
             }
             else{
                 console.log("vist right box and get information for next step")
                 Game2.boxPass=true;
+                informationArea.innerHTML=("<h4>You find a notebook wrote \"There is a weird clock, it only ring at mid nigth.\"</h4>")+informationArea.innerHTML;
+                Crafty.e("NoteBook").at(3,15)
+                .attr({alpha:0.2})
+                .tween({alpha: 1.0}, 100);
             }
         }
         box.destroy();

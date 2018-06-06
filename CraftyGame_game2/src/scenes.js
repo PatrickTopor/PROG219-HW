@@ -48,6 +48,45 @@ Crafty.scene('Loading', function(){
         Crafty.sprite(64,128, 'images/clock.png', {
             spr_clock:    [0, 0]
         });
+        Crafty.sprite(32,32, 'images/notebook.png', {
+            spr_noteBook:    [0, 0]
+        });
+        Crafty.sprite(32,32, 'images/key.png', {
+            spr_key:    [0, 0]
+        });
+        Crafty.sprite(96,96, 'images/star1.png', {
+            spr_star1:    [0, 0]
+        });
+        Crafty.sprite(64,64, 'images/sculpture.png', {
+            spr_sculpture1:    [0, 0],
+            spr_sculpture2:    [0, 1]
+        });
+        Crafty.sprite(64,64, 'images/door1.png', {
+            spr_door1:    [0, 0],
+        });
+        Crafty.sprite(64,64, 'images/door2.png', {
+            spr_door2:    [0, 0],
+        });
+        Crafty.sprite(32,64, 'images/sculpture_angel.png', {
+            spr_angelLeft:    [0, 0],
+            spr_angelRight:    [1, 0],
+        });
+        Crafty.sprite(32,64, 'images/sculpture_ascetic.png', {
+            spr_ascetic:    [0, 0],
+        });
+        Crafty.sprite(32,64, 'images/sculpture_dragon.png', {
+            spr_dragon:    [0, 0],
+        });
+        Crafty.sprite(51,51, 'images/water_vat.png', {
+            spr_waterVat:    [0, 0],
+        });
+        Crafty.sprite(62,62, 'images/pool.png', {
+            spr_pool:    [0, 0],
+        });
+        Crafty.sprite(64,64, 'images/evil_dragon.png', {
+            spr_evilDragonL:    [0, 0],
+            spr_evilDragonR:    [1, 0],
+        });
         // Define the PC's sprite to be the first sprite in the third row of the
         //  animation sprite map
         Crafty.sprite(32, 'images/player_animation.png', {
@@ -63,6 +102,8 @@ Crafty.scene('Loading', function(){
 
 
 Crafty.scene('Game', function() {
+    //welcome message
+    informationArea.innerHTML="<h2>Welcome to the second game!</h2>";
     // A 2D array to keep track of all occupied tiles (array of arrays!)
     this.occupied = new Array(Game.map_grid.width);
     for (var i = 0; i < Game.map_grid.width; i++) {
@@ -157,6 +198,32 @@ Crafty.scene('Game', function() {
             }
         }
     }
+    //Sculpture1 and Sculpture2
+    this.Sculpture1=Crafty.e('Sculpture1').at(8, 12);
+    this.Sculpture2=Crafty.e('Sculpture2').at(15, 12);
+    //star
+    this.starLeft=Crafty.e('Star1').at(3, 10);
+    this.starRight=Crafty.e('Star1').at(19, 10);
+    //door
+    this.doorLeft=Crafty.e('Door1').at(12, 0);
+    this.doorRight=Crafty.e('Door2').at(12, 15);
+    //angel
+    this.angelLeft1=Crafty.e('AngelLeft').at(10, 0);
+    this.angelLeft2=Crafty.e('AngelLeft').at(8, 0);
+    this.angelRight1=Crafty.e('AngelRight').at(14, 0);
+    this.angelRight2=Crafty.e('AngelRight').at(16, 0);
+    //ascetic
+    this.ascetic1=Crafty.e('Ascetic').at(10, 3);
+    this.ascetic2=Crafty.e('Ascetic').at(14, 3);
+    //pool and waterVat
+    this.pool=Crafty.e('Pool').at(19, 4);
+    this.waterVat=Crafty.e('WaterVat').at(4, 4);
+    //Evil Dragon
+    this.eDragonL=Crafty.e('EDragonL').at(22, 1);
+    this.eDragonR=Crafty.e('EDragonR').at(1, 1);
+    //Dragon
+    this.dragon1=Crafty.e('Dragon').at(1, 13);
+    this.dragon2=Crafty.e('Dragon').at(23, 13);
     // Player character, placed at 5, 5 on our grid
     // and mark that spot as occupied
     this.player = Crafty.e('PlayerCharacter').at(12, 14);
@@ -172,17 +239,9 @@ Crafty.scene('Game', function() {
     this.boxLeft=Crafty.e('Box').at(Game2.boxLeftGridPosition.x,Game2.boxLeftGridPosition.y);
     this.boxRight=Crafty.e('Box').at(Game2.boxRightGridPosition.x,Game2.boxRightGridPosition.y);
     randomBox();//random box not null
-    // and mark that spot as occupied
+    // clock
     this.clock = Crafty.e('Clock').at(6, 7);
     this.occupied[this.clock.at().x][this.clock.at().y] = true;
-
-    this.TextShow=Crafty.e("2D, DOM, Text")
-                    .attr({ x: 32, y: 10 })
-                    .text("Information:")
-                    .textColor("#FFFFFF")
-                    .textFont({  type: 'italic',size: '1em'});
-    console.log(this.TextShow);
-
 });
 Crafty.scene('Victory', function() {
     Crafty.e('2D, DOM, Text')

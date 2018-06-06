@@ -23,7 +23,7 @@ let Game = {
 // Initialize and start our game
     start: function() {
         // Start crafty and set a background color so that we can see it's working
-        Crafty.init(Game.width(), Game.height());
+        Crafty.init(Game.width(), Game.height(), document.getElementById('game'));
         Crafty.background('rgb(255, 255, 255)');
         // Simply start the "Game" scene to get things going
         Crafty.scene('Loading');
@@ -49,4 +49,5 @@ $text_css = {
     'color': 'white',
     'text-align': 'center'
 }
-Game.start();       
+let informationArea=document.getElementById("information");
+Game.start();   
