@@ -2,7 +2,7 @@
 
 Crafty.scene('opening1', function(){
 
-    //somehow cannot get the game to work, must figure out later
+    //somehow cannot get the music to work, must figure out later
     /*var sound = {
         "audio":{
             "first":["../sounds/jungleMusic.mp3"]
@@ -82,6 +82,7 @@ Crafty.scene('Game1', function(){
     let screenWidth = 1200;
     let screenHeight = 800;
     let hitCounter = 0;
+    let keepRaining = true;
 
     //add floor
     Crafty.e('Floor')
@@ -123,46 +124,46 @@ Crafty.scene('Game1', function(){
     Crafty.e('tree')
     .attr({x: 1075, y: 650});
 
-        //blocks ahead
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 100, y:500, w: 30, h:30})
-        .color('grey');
+    //blocks ahead
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 100, y:500, w: 30, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 600, y:600, w: 30, h:30})
-        .color('grey');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 600, y:600, w: 30, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 300, y:600, w: 60, h:30})
-        .color('grey');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 300, y:600, w: 60, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 900, y:400, w: 30, h:30})
-        .color('grey');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 900, y:400, w: 30, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 1000, y:375, w: 60, h:30})
-        .color('#A9A9A9');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 1000, y:375, w: 60, h:30})
+    .color('#A9A9A9');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 600, y:400, w: 60, h:30})
-        .color('grey');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 600, y:400, w: 60, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 770, y:225, w: 60, h:30})
-        .color('grey');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 770, y:225, w: 60, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 500, y:175, w: 30, h:30})
-        .color('grey');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 500, y:175, w: 30, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 220, y:260, w: 60, h:30})
-        .color('grey');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 220, y:260, w: 60, h:30})
+    .color('grey');
     
-        Crafty.e('Block, 2D, Canvas, Color, Floor')
-        .attr({x: 1160, y:100, w: 40, h:50})
-        .color('black');
+    Crafty.e('Block, 2D, Canvas, Color, Floor')
+    .attr({x: 1160, y:100, w: 40, h:50})
+    .color('black');
 
     let player1 = Crafty.e('Player')
     .attr({x: 20, y: 200})//player location
@@ -171,7 +172,7 @@ Crafty.scene('Game1', function(){
     .bind("EnterFrame", function(){
         if (this.x == 1200)
         {
-            
+            keepRaining = false;
             Crafty.scene('opening2');
             //call the second game, but make it delayed like the first one
         }
@@ -210,7 +211,7 @@ Crafty.scene('Game1', function(){
 
       //controls the rate of rain
       Crafty.bind("EnterFrame", function(){
-        if (Crafty.frame() % 10 == 0)
+        if (Crafty.frame() % 10 == 0 && keepRaining == true)
         {
           drop();
         }
