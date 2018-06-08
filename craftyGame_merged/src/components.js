@@ -117,7 +117,7 @@ Crafty.c('ScreenSide2',{
 Crafty.c('Floor',{
     init:function(){
         this.requires('2D, Canvas, Solid, Color')
-        .attr({w: 1200, h: 10})
+        .attr({w: 1200, h: 20})
         .color('#29AB46');
     }
 });
