@@ -27,7 +27,7 @@ let Game = {
         Crafty.background('rgb(255, 255, 255)');
         // Simply start the "Game" scene to get things going
         Crafty.scene('Loading'); */
-        Crafty.init(800, 800,document.getElementById('game'));
+        Crafty.init(1200, 800,document.getElementById('game'));
         Crafty.background('rgb(206, 215, 183)');
         Crafty.scene('opening1');
 
