@@ -1,0 +1,37 @@
+#game{
+    margin: 60px auto 0;
+}
+#information{
+    color: #ffffff;
+    width: 600px;
+    height: 150px;
+    margin: 0 auto;
+    opacity: 0.85;
+    padding: 10px;
+    background-color: #222222;
+    text-align: center;
+    overflow:auto;
+}
+body{
+    background-image: url("../images/temple.jpg");
+    background-repeat:no-repeat; 
+    background-size: cover;
+}
+#screen
+{
+    margin-left: 10%;
+}
+body, html 
+{ 
+    margin:0; 
+    padding: 0; 
+    overflow:hidden; 
+    font-family:Arial; 
+    font-size:20px 
+}
+#cr-stage 
+{ 
+    border:2px solid black; 
+    margin:5px auto; 
+    color:white 
+}
