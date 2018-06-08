@@ -87,7 +87,7 @@ Crafty.scene('Game1', function(){
 
     //add floor
     Crafty.e('Floor')
-    .attr({x: 0, y: 780});
+    .attr({x: 0, y: 680});
 
     Crafty.e('ScreenSide')
     .attr({x:0,y:0});
