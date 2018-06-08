@@ -177,6 +177,12 @@ Crafty.scene('Game1', function(){
             Crafty.scene('opening2');
             //call the second game, but make it delayed like the first one
         }
+        else if(this.y < 0)
+        {
+            player1.x = 20;
+            hitCounter = 0;
+                
+        }
       });
 
       //shows the player how many times they've been hit
