@@ -181,7 +181,7 @@ Crafty.scene('Game1', function(){
         {
             player1.x = 20;
             hitCounter = 0;
-                
+            hitText.text("Hit:" + hitCounter);    
         }
       });
 
