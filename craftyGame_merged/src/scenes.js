@@ -28,7 +28,7 @@ Crafty.scene('opening1', function(){
     Crafty.e('2D, DOM, Text')
     .text("You are a professor of History at the prestigious Bellevue College, and you have heard of a lost temple hidden in the jungles of Val Verde.")
     .attr({x: 300, y: 125, w: 650})
-    .textColor(rgb(255,250,250));
+    .textColor('rgb(255,250,250)');
 
     Crafty.e('2D, DOM, Text')
     .text("You boarded a plane and traveled to this country to see if the rumors had some truth to it, and after a long donkey ride, you see the ruins of the temple.")
