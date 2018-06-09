@@ -2,7 +2,7 @@
 
 Crafty.scene('opening1', function(){
     //somehow cannot get the music to work, must figure out later
-    /*var sound = {
+    var sound = {
         "audio":{
             "first":["../sounds/jungleMusic.mp3"]
         }
@@ -11,7 +11,7 @@ Crafty.scene('opening1', function(){
 
     Crafty.load({sound})
 
-    Crafty.audio.play("first");*/
+    Crafty.audio.play("first");
 
     //Crafty.audio.add("first", "../sounds/jungleMusic.mp3");
     //Crafty.audio.play("first");
