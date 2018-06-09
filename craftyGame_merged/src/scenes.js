@@ -20,17 +20,17 @@ Crafty.scene('opening1', function(){
     .attr({w: 1200, h: 800})
     .image("images/jungle3.jpg");
 
-    Crafty.e('2D, DOM, Text')
+    Crafty.e('2D, Canvas, Text')
     .attr({x: 500, y: 100, w: 200})
     .text("Welcome to the Temple Adventure Game!")
     .textColor('#ffffff');
 
-    Crafty.e('2D, DOM, Text')
+    Crafty.e('2D, Canvas, Text')
     .text("You are a professor of History at the prestigious Bellevue College, and you have heard of a lost temple hidden in the jungles of Val Verde.")
     .attr({x: 300, y: 125, w: 650})
     .textColor('rgb(255,250,250)');
 
-    Crafty.e('2D, DOM, Text')
+    Crafty.e('2D, Canvas, Text')
     .text("You boarded a plane and traveled to this country to see if the rumors had some truth to it, and after a long donkey ride, you see the ruins of the temple.")
     .attr({x: 250, y: 150, w: 700})
     .textColor('white');
