@@ -23,7 +23,7 @@ Crafty.scene('opening1', function(){
     Crafty.e('2D, DOM, Text')
     .attr({x: 500, y: 100, w: 200})
     .text("Welcome to the Temple Adventure Game!")
-    .textColor('white');
+    .textColor('#ffffff');
 
     Crafty.e('2D, DOM, Text')
     .text("You are a professor of History at the prestigious Bellevue College, and you have heard of a lost temple hidden in the jungles of Val Verde.")
