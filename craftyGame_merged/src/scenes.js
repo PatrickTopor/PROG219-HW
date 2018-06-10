@@ -508,8 +508,28 @@ Crafty.scene('Game', function() {
 });
 Crafty.scene('Victory', function() {
     Crafty.e('2D, DOM, Text')
-        .attr({ x: 0, y: 0 })
+        .attr({ x: 600, y: 100 })
         .text('Victory!');
+    
+        Crafty.e('2D, DOM, Text')
+        .attr({ x: 450, y: 125, w: 400 })
+        .text('You have found a large pile of treasure such as your eyes have never seen before!');
+    
+        Crafty.e('2D, DOM, Text')
+        .attr({ x: 450, y: 150, w: 400 })
+        .text('And in that pile, you have found a golden idol with a ruby where its heart should be.');
+    
+        Crafty.e('2D, DOM, Text')
+        .attr({ x: 400, y: 175, w: 500})
+        .text('You take it out with you and the natives surround you.  However, they realize what it is upon seeing it.');
+    
+        Crafty.e('2D, DOM, Text')
+        .attr({ x: 400, y: 200, w: 500})
+        .text('Instead of killing you, they thank you for finiding their missing idol, and their tribe is eternally grateful.');
+    
+        Crafty.e('2D, DOM, Text')
+        .attr({ x: 375, y: 225, w: 600})
+        .text('As a reward, they say they will allow you to interview their elders about the history of the tribe and the empires long forgotten.');
     this.restart_game = function() {
         Crafty.scene('Game');
     };
