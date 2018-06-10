@@ -516,7 +516,7 @@ Crafty.scene('Game', function() {
 });
 Crafty.scene('Victory', function() {
     Crafty.e('2D, DOM, Text')
-        .attr({ x: 300, y: 100 })
+        .attr({ x: 400, y: 100 })
         .text('Victory!');
     
         Crafty.e('2D, DOM, Text')
