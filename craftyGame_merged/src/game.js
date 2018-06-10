@@ -34,7 +34,7 @@ let Game = {
         //starts the game function after a few second(s)
         Crafty.e("Delay").delay(function () {
             Crafty.scene('Game1');
-        }, 30000, 0);
+        }, 31000, 0);
     },
 };
 let Game2={
