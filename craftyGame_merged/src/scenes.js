@@ -57,22 +57,22 @@ Crafty.scene('opening1', function(){
 
     Crafty.e('2D, DOM, Text')
     .text("Use the left and right arrow keys on the keyboard to move side to side, and the up arrow key to jump.")
-    .attr({x: 400, y: 375, w: 500})
+    .attr({x: 375, y: 375, w: 500})
     .textColor('white');
 
     Crafty.e('2D, DOM, Text')
     .text("Jump from block to block to reach the upper levels of the game.")
-    .attr({x: 400, y: 400, w: 500})
+    .attr({x: 375, y: 400, w: 500})
     .textColor('white');
 
     Crafty.e('2D, DOM, Text')
     .text("Get to the other side and through the temple entrance before your charecter gets stabbed 5 times.")
-    .attr({x: 400, y: 425, w: 500})
+    .attr({x: 375, y: 425, w: 500})
     .textColor('white');
 
     Crafty.e('2D, DOM, Text')
     .text("If you die, the game will restart and continue until you win.")
-    .attr({x: 400, y: 450, w: 500})
+    .attr({x: 375, y: 450, w: 500})
     .textColor('white');
 
 });//end opening1 scene
