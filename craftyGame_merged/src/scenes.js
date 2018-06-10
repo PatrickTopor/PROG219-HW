@@ -26,11 +26,11 @@ Crafty.scene('StartGame', function(){
     .textFont({ size: '2em', weight: 'bold' });
 
     Crafty.e('2D, DOM, Text')
-    .text("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYou are a professor of History at the prestigious Bellevue College, and you have heard of a lost temple hidden in the jungles of Val Verde."+
-    "You boarded a plane and traveled to this country to see if the rumors had some truth to it, and after a long donkey ride, you see the ruins of the temple."+
-    "But what would an adventure be without a little danger, you thought as you approach the temple.  As you step closer, your wish is granted."+
-    "A large group of natives spring from the top of the temple and start shouting at you.  As you try to think what to say to them, a knife barely misses you."+
-    "The temple entrence is unguared and looks to be your only place of refuge at the moment, and as the flurry of knifes start to come at you, you must reach it as soon as possible.</p>"
+    .text("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYou are a professor of History at the prestigious Bellevue College, and you have heard of a lost temple hidden in the jungles of Val Verde. "+
+    "You boarded a plane and traveled to this country to see if the rumors had some truth to it, and after a long donkey ride, you see the ruins of the temple. "+
+    "But what would an adventure be without a little danger, you thought as you approach the temple.  As you step closer, your wish is granted. "+
+    "A large group of natives spring from the top of the temple and start shouting at you.  As you try to think what to say to them, a knife barely misses you. "+
+    "The temple entrance is unguarded and looks to be your only place of refuge at the moment, and as the flurry of knifes start to come at you, you must reach it as soon as possible.</p>"
     )
     .attr({x: 100, y: 60, w: 1000})
     .textFont({ size: '1em'});
