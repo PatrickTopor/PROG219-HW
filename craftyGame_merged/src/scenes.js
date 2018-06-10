@@ -225,11 +225,19 @@ Crafty.scene('opening2', function() {
     Crafty.e('2D, DOM, Text')
     .text("Congrats!  You made it to the temple alive!  ")
     .attr({x: 500, y: 100, w: 200});
+    
+    Crafty.e('2D, DOM, Text')
+    .text("You decide that maybe the natives can be bribed to spare your life.")
+    .attr({x: 450, y: 125, w: 400});
+    
+    Crafty.e('2D, DOM, Text')
+    .text("But with what?  You decide to look around and notice some chests.  Mabye there is treasure in there...")
+    .attr({x: 400, y: 150, w: 600});
 
     //add the instructions for the player here
     Crafty.e("Delay").delay(function () {
         Crafty.scene('Loading');
-    }, 4000, 0);
+    }, 15000, 0);
 
 
 
