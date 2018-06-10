@@ -363,6 +363,25 @@ Crafty.scene('SecondGame', function() {
     //welcome message
     informationArea.innerHTML="<h2>Welcome to the second game!</h2>";
     // A 2D array to keep track of all occupied tiles (array of arrays!)
+    let timeTotal=120;
+    let timerText = Crafty.e('2D,DOM, Text')
+    .attr({
+      x: Game.width() - 200,
+      y: 0
+    })
+    .textColor("#ffffff")
+    .text("Time:120")
+    .textFont({ size: '1.6em', weight: 'bold' });
+
+    let gameTimer= setInterval(function(){
+        timeTotal=timeTotal-1;
+        timerText.text("Time:"+timeTotal)
+    },1000)
+    setTimeout(function(){
+        clearInterval(gameTimer);
+        Crafty.scene('LostSecondGame');
+    }, 120000);
+
     this.occupied = new Array(Game.map_grid.width);
     for (var i = 0; i < Game.map_grid.width; i++) {
         this.occupied[i] = new Array(Game.map_grid.height);
