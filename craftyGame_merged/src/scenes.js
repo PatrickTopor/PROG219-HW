@@ -1,6 +1,6 @@
 
 
-Crafty.scene('opening1', function(){
+Crafty.scene('StartGame', function(){
     //somehow cannot get the music to work, must figure out later
     /*var sound = {
         "audio":{
@@ -21,63 +21,40 @@ Crafty.scene('opening1', function(){
     .image("images/explorer.jpg");
 
     Crafty.e('2D, DOM, Text')
-    .attr({x: 500, y: 100, w: 200})
+    .attr({x: 200, y: 20, w: 1200})
     .text("Welcome to the Temple Adventure Game!")
-    .textColor('white');
+    .textFont({ size: '2em', weight: 'bold' });
 
     Crafty.e('2D, DOM, Text')
-    .text("You are a professor of History at the prestigious Bellevue College, and you have heard of a lost temple hidden in the jungles of Val Verde.")
-    .attr({x: 300, y: 125, w: 650})
-    .textColor('white');
-
-    Crafty.e('2D, DOM, Text')
-    .text("You boarded a plane and traveled to this country to see if the rumors had some truth to it, and after a long donkey ride, you see the ruins of the temple.")
-    .attr({x: 250, y: 150, w: 700})
-    .textColor('white');
-
-    Crafty.e('2D, DOM, Text')
-    .text("But what would an adventure be without a little danger, you thought as you approach the temple.  As you step closer, your wish is granted.")
-    .attr({x: 300, y: 175, w: 700})
-    .textColor('white');
-
-    Crafty.e('2D, DOM, Text')
-    .text("A large group of natives spring from the top of the temple and start shouting at you.  As you try to think what to say to them, a knife barely misses you.")
-    .attr({x: 275, y: 200, w: 700})
-    .textColor('white');
-
-    Crafty.e('2D, DOM, Text')
-    .text("The temple entrence is unguared and looks to be your only place of refuge at the moment, and as the flurry of knifes start to come at you, you must reach it as soon as possible.")
-    .attr({x: 250, y: 225, w: 800})
-    .textColor('white');
+    .text("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYou are a professor of History at the prestigious Bellevue College, and you have heard of a lost temple hidden in the jungles of Val Verde."+
+    "You boarded a plane and traveled to this country to see if the rumors had some truth to it, and after a long donkey ride, you see the ruins of the temple."+
+    "But what would an adventure be without a little danger, you thought as you approach the temple.  As you step closer, your wish is granted."+
+    "A large group of natives spring from the top of the temple and start shouting at you.  As you try to think what to say to them, a knife barely misses you."+
+    "The temple entrence is unguared and looks to be your only place of refuge at the moment, and as the flurry of knifes start to come at you, you must reach it as soon as possible.</p>"
+    )
+    .attr({x: 100, y: 60, w: 1000})
+    .textFont({ size: '1em'});
 
     Crafty.e('2D, DOM, Text')
     .text("INSTRUCTIONS:")
-    .attr({x: 500, y: 350, w: 200})
-    .textColor('white');
+    .attr({x: 300, y: 280, w: 200})
+    .textFont({ size: '1.5em', weight: 'bold' });
 
     Crafty.e('2D, DOM, Text')
-    .text("Use the left and right arrow keys on the keyboard to move side to side, and the up arrow key to jump.")
-    .attr({x: 375, y: 375, w: 500})
-    .textColor('white');
-
-    Crafty.e('2D, DOM, Text')
-    .text("Jump from block to block to reach the upper levels of the game.")
-    .attr({x: 375, y: 400, w: 500})
-    .textColor('white');
-
-    Crafty.e('2D, DOM, Text')
-    .text("Get to the other side and through the temple entrance before your charecter gets stabbed 5 times.")
-    .attr({x: 375, y: 425, w: 500})
-    .textColor('white');
-
-    Crafty.e('2D, DOM, Text')
-    .text("If you die, the game will restart and continue until you win.")
-    .attr({x: 375, y: 450, w: 500})
-    .textColor('white');
-
+    .text("Use the left and right arrow keys on the keyboard to move side to side, and the up arrow key to jump."+
+    "<br/>Jump from block to block to reach the upper levels of the game."+
+    "<br/>Get to the other side and through the temple entrance before your charecter gets stabbed 5 times."+
+    "<br/>If you die, the game will restart and continue until you win.")
+    .attr({x: 100, y: 330, w: 700})
+    .textFont({ size: '1em'});
+    
+    //add the instructions for the player here
+    Crafty.e("Delay").delay(function () {
+        Crafty.scene('FirstGame');
+    }, 5000, 0);
 });//end opening1 scene
 
-Crafty.scene('Game1', function(){
+Crafty.scene('FirstGame', function(){
     //hide information area
     document.getElementById("information").style.display="none";
     let screenWidth = 1200;
@@ -166,15 +143,20 @@ Crafty.scene('Game1', function(){
     .attr({x: 1160, y:100, w: 40, h:50})
     .color('black');
 
-    let player1 = Crafty.e('Player')
+    let player1 = Crafty.e('Player,Jumper')
     .attr({x: 20, y: 200})//player location
-
+    .bind('KeyDown', function(e) {
+        console.log(player1);
+        if (e.key == Crafty.keys.UP_ARROW&&this._anti=="Floor"){
+        Crafty.audio.play("jump", 1);
+        }
+    })
     //now just call the enxt scene, but on a 3-5 second delay
     .bind("EnterFrame", function(){
         if (this.x == 1200)
         {
             keepRaining = false;
-            Crafty.scene('opening2');
+            Crafty.scene('OpenSecondGame');
             //call the second game, but make it delayed like the first one
         }
       });
@@ -182,9 +164,11 @@ Crafty.scene('Game1', function(){
       //shows the player how many times they've been hit
       let hitText = Crafty.e('2D,DOM, Text')
       .attr({
-        x: screenWidth - 100,
+        x: screenWidth - 200,
         y: 10
-      });
+      })
+      .text("Hit:0")
+      .textFont({ size: '2em', weight: 'bold' });
 
       //rain function
       function drop()
@@ -197,11 +181,10 @@ Crafty.scene('Game1', function(){
                   hitCounter++;
                   hitText.text("Hit:" + hitCounter);
       
-                  if (hitCounter == 5)//reset player location and hit counter
+                  if (hitCounter == 5)//move to lose scene
                   {
-                    player1.x = 20;
-                    hitCounter = 0;
-                    hitText.text("Hit:" + hitCounter);
+                    Crafty.scene('LostFirstGame');
+                    keepRaining = false;
                   }
               })
               .bind("EnterFrame", function() {
@@ -220,42 +203,50 @@ Crafty.scene('Game1', function(){
 
 });//end Game1 scene
 
-Crafty.scene('opening2', function() { 
-
+Crafty.scene('OpenSecondGame', function() { 
+    //init game area size
     Crafty.e('2D, DOM, Text')
-    .text("Congrats!  You made it to the temple alive!  ")
-    .attr({x: 500, y: 100, w: 200});
+    .text("<h1>Congrats!  You made it to the temple alive!</h1>")
+    .attr({x: 0, y: 200, w: 1200})
+    .textFont({ size: '1em'})
+    .css({'text-align': 'center'});
     
     Crafty.e('2D, DOM, Text')
-    .text("You decide that maybe the natives can be bribed to spare your life.")
-    .attr({x: 450, y: 125, w: 400});
+    .text("<p>You decide that maybe the natives can be bribed to spare your life.</p>"+
+    "<p>But with what?  You decide to look around and notice some chests.  Mabye there is treasure in there...</p>")
+    .attr({x: 100, y: 300, w: 1000})
+    .textFont({ size: '1em'})
+    .css({'text-align': 'center'});
     
-    Crafty.e('2D, DOM, Text')
-    .text("But with what?  You decide to look around and notice some chests.  Mabye there is treasure in there...")
-    .attr({x: 400, y: 150, w: 600});
 
     //add the instructions for the player here
     Crafty.e("Delay").delay(function () {
         Crafty.scene('Loading');
-    }, 15000, 0);
-
-
-
-
-
-
-
-
-
+    }, 5000, 0);
 });//end opening2 scene
+
+Crafty.scene('LostFirstGame', function() { 
+    Crafty.e('2D, DOM, Text')
+    .text("<p>You lost! Press any key to restart first game!</p>")
+    .attr({x: 0, y: 300, w: 1200})
+    .textFont({ size: '2em', weight: 'bold' })
+    .css({'text-align': 'center'});
+
+    this.restart_firstgame = function() {
+        Crafty.scene('StartGame');
+    };
+    this.bind('KeyDown', this.restart_firstgame);
+
+},
+function() {
+    this.unbind('KeyDown', this.restart_firstgame);
+});
 
 // Loading scene
 // -------------
 // Handles the loading of binary assets such as images and audio files
 
 Crafty.scene('Loading', function(){
-    Crafty.viewport.init(Game.width(), Game.height(), document.getElementById('game'));
-
     // Draw some text for the player to see in case the file
     //  takes a noticeable amount of time to load
     Crafty.e('2D, DOM, Text')
@@ -357,14 +348,16 @@ Crafty.scene('Loading', function(){
         }, 0, 2);
   
       // Now that our sprites are ready to draw, start the game
-      Crafty.scene('Game');
+      Crafty.scene('SecondGame');
     })
 });
 
 
 
 
-Crafty.scene('Game', function() {
+Crafty.scene('SecondGame', function() {
+    //init game area size
+    Crafty.viewport.init(Game.width(), Game.height(), document.getElementById('game'));
     //display information area for game2
     document.getElementById("information").style.display="block";
     //welcome message
@@ -512,37 +505,39 @@ Crafty.scene('Game', function() {
     this.boxRight=Crafty.e('Box').at(Game2.boxRightGridPosition.x,Game2.boxRightGridPosition.y);
     randomBox();//random box not null
     // clock
-    this.clock = Crafty.e('Clock').at(6, 7);
+    this.clock = Crafty.e('Clock').at(6, 7.3);
 });
 Crafty.scene('Victory', function() {
     Crafty.e('2D, DOM, Text')
-        .attr({ x: 400, y: 100 })
-        .text('Victory!');
+        .attr({ x: 0, y: 100 ,w: 800 })
+        .text('Victory!')
+        .textFont({ size: '1em', weight: 'bold' })
+        .css({'text-align': 'center'});
     
         Crafty.e('2D, DOM, Text')
-        .attr({ x: 225, y: 125, w: 400 })
-        .text('You have found a large pile of treasure such as your eyes have never seen before!');
-    
-        Crafty.e('2D, DOM, Text')
-        .attr({ x: 225, y: 150, w: 400 })
-        .text('And in that pile, you have found a golden idol with a ruby where its heart should be.');
-    
-        Crafty.e('2D, DOM, Text')
-        .attr({ x: 200, y: 175, w: 500})
-        .text('You take it out with you and the natives surround you.  However, they realize what it is upon seeing it.');
-    
-        Crafty.e('2D, DOM, Text')
-        .attr({ x: 200, y: 200, w: 500})
-        .text('Instead of killing you, they thank you for finiding their missing idol, and their tribe is eternally grateful.');
-    
-        Crafty.e('2D, DOM, Text')
-        .attr({ x: 187.5, y: 225, w: 600})
-        .text('As a reward, they say they will allow you to interview their elders about the history of the tribe and the empires long forgotten.');
-    this.restart_game = function() {
-        Crafty.scene('Game');
+        .attr({ x: 50, y: 200, w: 700 })
+        .text('<p>You have found a large pile of treasure such as your eyes have never seen before!'+
+        'And in that pile, you have found a golden idol with a ruby where its heart should be.'+
+        'You take it out with you and the natives surround you.  However, they realize what it is upon seeing it.'+
+        'Instead of killing you, they thank you for finiding their missing idol, and their tribe is eternally grateful.'+
+        'As a reward, they say they will allow you to interview their elders about the history of the tribe and the empires long forgotten.</p>')
+        .textFont({ size: '0.8em'})
+        .css({'text-align': 'center'});
+});
+
+Crafty.scene('LostSecondGame', function() {
+    Crafty.e('2D, DOM, Text')
+    .text("<p>You lost! Press any key to restart first game!</p>")
+    .attr({x: 0, y: 200, w: 800})
+    .textFont({ size: '2em', weight: 'bold' })
+    .css({'text-align': 'center'});
+
+    this.restart_secondgame = function() {
+        Crafty.scene('Loading');
     };
-    this.bind('KeyDown', this.restart_game);
+    this.bind('KeyDown', this.restart_secondgame);
 },
 function() {
-    this.unbind('KeyDown', this.restart_game);
+    this.unbind('KeyDown', this.restart_secondgame);
 });
+

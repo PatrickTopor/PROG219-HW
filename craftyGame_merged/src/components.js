@@ -1,3 +1,6 @@
+Crafty.audio.add("jump", "sound/jump.mp3");
+Crafty.audio.add("happy", "sound/happy.mp3");
+
 //this is supposed to load the sprite
 
 Crafty.sprite(60,65,'images/explorer sprite.png', {
@@ -58,7 +61,7 @@ Crafty.c('Drop',{
 //player
 Crafty.c('Player', {
     init: function() {
-        this.requires('2D,Canvas,DOM,Twoway,Gravity,Collision,str_player,SpriteAnimation')//this calls the sprite
+        this.requires('2D,Canvas,DOM,Twoway,Gravity,Collision,Jumper,str_player,SpriteAnimation')//this calls the sprite
         .twoway(4)
         .gravity('Floor')
         // .gravityConst(25) //do not works in new crafty version
@@ -472,6 +475,7 @@ Crafty.c('PlayerCharacter', {
             .tween({alpha: 1.0}, 100);
             Game2.showEntrance=true;
            // console.log("entrance showed")
+           Crafty.audio.play("happy", 1);
             informationArea.innerHTML=("<h4>You put the key into the hole, there is some noise from right.</h4>")+informationArea.innerHTML;
         }
     },
@@ -482,6 +486,7 @@ Crafty.c('PlayerCharacter', {
             //create secretEntrace
             Game2.clockPass=true;
             //console.log("clock passed")
+            Crafty.audio.play("happy", 1);
             informationArea.innerHTML=("<h4>You turned the clock needle to 12:00 am. You find a special key.</h4>")+informationArea.innerHTML;
             Crafty.e("Key,Tween").at(4,15)
             .attr({alpha:0.2})
@@ -498,6 +503,7 @@ Crafty.c('PlayerCharacter', {
             if(Game2.leftNotNull){
                 //console.log("vist left box and get information for next step")
                 Game2.boxPass=true;
+                Crafty.audio.play("happy", 1);
                 informationArea.innerHTML=("<h4>You find a notebook wrote \"There is a weird clock.\"</h4>")+informationArea.innerHTML;
                 Crafty.e("NoteBook").at(3,15)
                 .attr({alpha:0.2})
@@ -516,6 +522,7 @@ Crafty.c('PlayerCharacter', {
             else{
                 //console.log("vist right box and get information for next step")
                 Game2.boxPass=true;
+                Crafty.audio.play("happy", 1);
                 informationArea.innerHTML=("<h4>You find a notebook wrote \"There is a weird clock, it only ring at mid nigth.\"</h4>")+informationArea.innerHTML;
                 Crafty.e("NoteBook").at(3,15)
                 .attr({alpha:0.2})

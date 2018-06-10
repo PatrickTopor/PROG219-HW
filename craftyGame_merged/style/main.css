@@ -11,6 +11,7 @@
     background-color: #222222;
     text-align: center;
     overflow:auto;
+    display: none;
 }
 body{
     background-image: url("../images/temple.jpg");

@@ -29,12 +29,8 @@ let Game = {
         Crafty.scene('Loading'); */
         Crafty.init(1200, 800,document.getElementById('game'));
         Crafty.background('rgb(206, 215, 183)');
-        Crafty.scene('opening1');
-
-        //starts the game function after a few second(s)
-        Crafty.e("Delay").delay(function () {
-            Crafty.scene('Game1');
-        }, 31000, 0);
+        //Crafty.scene('StartGame');
+        Crafty.scene('Loading');
     },
 };
 let Game2={
