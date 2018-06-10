@@ -18,7 +18,7 @@ Crafty.scene('opening1', function(){
 
     var ent = Crafty.e("2D, DOM, Image")
     .attr({w: 1200, h: 800})
-    .image("images/jungle3.jpg");
+    .image("images/explorer.jpg");
 
     Crafty.e('2D, DOM, Text')
     .attr({x: 500, y: 100, w: 200})
