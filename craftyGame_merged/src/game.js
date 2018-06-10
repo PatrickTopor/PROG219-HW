@@ -30,7 +30,7 @@ let Game = {
         Crafty.init(1200, 800,document.getElementById('game'));
         Crafty.background('rgb(206, 215, 183)');
         //Crafty.scene('StartGame');
-        Crafty.scene('Loading');
+        Crafty.scene('StartGame');
     },
 };
 let Game2={
