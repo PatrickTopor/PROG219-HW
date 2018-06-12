@@ -1,0 +1,49 @@
+
+  
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+            body
+            {
+                background-image: url(images/jungle2.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            #game
+            {
+                border:solid 5px black;
+                border-radius:8px;
+                background-color: black;
+            }
+            .button
+            {
+                text-align: center;
+            }
+            #StartFirstGame
+            {
+                visibility:visible;
+            }
+            #StartSecondGame
+            {
+                visibility: hidden;
+            }
+        </style>
+      </head>
+      <body>
+                  <!-- <script src="lib/crafty.js"></script> -->
+         <!-- <script src="https://github.com/craftyjs/Crafty/releases/download/0.7.1/crafty-min.js"></script> -->
+        <!-- <script src="https://github.com/craftyjs/Crafty/releases/download/0.8.0/crafty-min.js"></script> -->
+        <div id="game" style="margin:0 auto;"></div>
+        <script  src="lib/crafty.js"></script>
+        <script src="src/game.js"></script>
+        <script src="src/components.js"></script>
+        <script src="src/scenes.js"></script>
+        <!--<script src="src/loadingVictoryScenes.js"></script>-->
+        <div class="button">
+        <input type="button" id = "StartFirstGame" value = "Play Game 1!" onclick="Game1()">
+        <br />
+        <input type="button" id = "StartSecondGame" value = "Play Game 2!" onclick="Game2()">
+      </div>
+    </body>
+      </html>
